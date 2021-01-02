@@ -8,6 +8,10 @@ const app = express()
 const feeder = new Motor('feeder')
 const shooter = new Motor('shooter')
 
+app.get('/status', (req, res) => {
+    res.sendStatus(200)
+})
+
 app.get('/feeder/start', (req, res) => {
     feeder.start()
     res.sendStatus(200)

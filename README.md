@@ -25,6 +25,12 @@ After the process, the files will be moved from the source (`src`) folder to the
 
 ## Available endpoints
 
+### Status
+
+To check if the server is up and running, send a GET request to /status
+
+The server will respond with a 200 (OK) status in case it is running.
+
 ### Feeder
 
 - To start the feeder motor, send a GET request to /feeder/start

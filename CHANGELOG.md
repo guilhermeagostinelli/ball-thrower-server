@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2021-01-02
+### Added
+- Endpoint that the client can use to verify if the server is up and running.
+
 ## [1.1.0] - 2021-01-02
 ### Added
 - Endpoint for starting the ball shooter motor.
@@ -18,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Endpoint for stopping the ball feeder motor.
 - Endpoint for changing the speed of the ball feeder motor.
 
-[Unreleased]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.1.0...develop
+[Unreleased]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.2.0...develop
+[1.2.0]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/guilhermeagostinelli/ball-thrower-server/releases/tag/v1.0.0
