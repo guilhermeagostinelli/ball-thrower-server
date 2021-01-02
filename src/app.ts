@@ -9,7 +9,7 @@ let feederScript: ChildProcessWithoutNullStreams | undefined
 
 function startFeeder() {
     if (typeof feederScript !== 'undefined') return
-    feederScript = spawn('python', ['feeder.py'])
+    feederScript = spawn('python', ['src/scripts/feeder.py'])
     console.log(`Feeder script started with PID ${feederScript.pid}`)
 }
 
