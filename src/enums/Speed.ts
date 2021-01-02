@@ -1,0 +1,1 @@
+export enum Speed { LOW = 'l', MEDIUM = 'm', HIGH = 'h' }
