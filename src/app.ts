@@ -30,7 +30,7 @@ app.get('/shooter/change-speed/:speed', (req, res) => {
     res.sendStatus(200)
 })
 app.get('/shooter/stop', (req, res) => {
-    feeder.stop()
+    shooter.stop()
     res.sendStatus(200)
 })
 
