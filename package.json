@@ -1,6 +1,6 @@
 {
   "name": "ball-thrower-server",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "RESTful API for controlling a ball thrower robot.",
   "main": "dist/app.js",
   "scripts": {

@@ -22,6 +22,13 @@ After the process, the files will be moved from the source (`src`) folder to the
 ### Running
 To start the HTTP server on port 3000, run `npm start`
 
+### Start the server on boot
+If you would like to start the server automatically once the Raspberry Pi boots, add the following line at the beggining of the `/etc/rc.local` file:
+
+`su pi -c 'node /home/pi/ball-thrower-server/dist/app.js < /dev/null &'`
+
+Note: replace `/home/pi/ball-thrower-server` by another absolute path in case the `ball-thrower-server` folder is located somewhere else.
+
 ## Available endpoints
 
 ### Status
