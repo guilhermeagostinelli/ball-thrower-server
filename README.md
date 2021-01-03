@@ -1,7 +1,7 @@
 # ball-thrower-server
-RESTful API for controlling a ball thrower robot.
+RESTful API for controlling a table tennis ball thrower robot.
 
-The robot consists of two motors: a feeder and a shooter. Each one is controlled by a separate python script.
+The robot consists of two motors: a feeder and a shooter. Each one is controlled by a separate python script that runs on a Raspberry Pi.
 
 The shooter is a DC motor responsible for throwing the ball. The speed of the shooter determines the amount of spin generated in the ball.
 
@@ -12,16 +12,15 @@ The feeder consists of a stepper motor to which the feeder plate is attached. It
 2. Download the project dependencies using `npm install`
 
 ## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development purposes. See Building section for notes on how to deploy the project on a live system.
-
-### Running
-To create a simple HTTP server on port 3000, run `npm start`
+These instructions will get you a copy of the project up and running on your Raspberry Pi.
 
 ### Building
-Just run
-    `npm run build`
+Just run `npm run build`
 
 After the process, the files will be moved from the source (`src`) folder to the distribution (`dist`) folder and you should have a production-ready version of this project.
+
+### Running
+To start the HTTP server on port 3000, run `npm start`
 
 ## Available endpoints
 
@@ -48,6 +47,9 @@ The server will respond with a 200 (OK) status in case it is running.
     - `m` (medium speed)
     - `h` (high speed)
 - To stop the shooter motor, send a GET request to /shooter/stop
+
+## Android/iOS App
+On [this other repository](https://github.com/guilhermeagostinelli/ball-thrower-app) you can find the source code for an app that interacts with the aforementioned API.
 
 ## Contributing
 
