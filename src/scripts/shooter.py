@@ -1,6 +1,7 @@
 from time import sleep
 import sys
 import RPi.GPIO as GPIO
+import traceback
 
 DUTY_CYCLE_MEDIUM_SPEED = 85
 controlPin1 = 24
@@ -34,7 +35,6 @@ try:
             sys.stdout.flush()
             GPIO.output(controlPin1, GPIO.LOW)
             GPIO.output(controlPin2, GPIO.LOW)
-            GPIO.cleanup()
             break
         elif x == 'l':
             print('low')
@@ -57,7 +57,11 @@ try:
             print('unrecognized input')
 
         sys.stdout.flush()
-except KeyboardInterrupt:
-    print('CTRL + C pressed, stopping...')
+except Exception:
+    print('An error occurred:')
+    traceback.print_exc()
+    sys.stdout.flush()
+finally:
+    print('clean up') 
     sys.stdout.flush()
     GPIO.cleanup()

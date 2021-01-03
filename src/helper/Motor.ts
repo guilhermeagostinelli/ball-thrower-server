@@ -11,7 +11,8 @@ export default class Motor {
 
     start() {
         if (typeof this.#process !== 'undefined') return
-        this.#process = spawn('python', [`src/scripts/${this.#scriptName}.py`])
+        this.#process = spawn('python', [`${__dirname}/../../src/scripts/${this.#scriptName}.py`])
+        this.#process.stdout.on('data', (chunk) => console.log(this.#scriptName + ':\n' + chunk.toString()));
         console.log(`Feeder script started with PID ${this.#process.pid}`)
     }
 
@@ -21,7 +22,6 @@ export default class Motor {
 
     stop() {
         this.sendCommand(Action.STOP)
-        this.#process?.kill()
         this.#process = undefined
     }
 
