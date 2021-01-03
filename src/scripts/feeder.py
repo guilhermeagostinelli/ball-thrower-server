@@ -2,6 +2,7 @@ import threading
 import time
 import sys
 import RPi.GPIO as GPIO
+import traceback
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -11,16 +12,12 @@ for pin in controlPins:
     GPIO.setup(pin, GPIO.OUT)
     GPIO.output(pin, 1)
 
-# Half stepping mode sequence.
+# Single phase stepping mode sequence.
 seq = [
     [1,0,0,0],
-    [1,1,0,0],
     [0,1,0,0],
-    [0,1,1,0],
     [0,0,1,0],
-    [0,0,1,1],
-    [0,0,0,1],
-    [1,0,0,1]
+    [0,0,0,1]
 ]
 
 print('\nFeeder started!')
@@ -29,7 +26,7 @@ print('The available commands are:\n')
 print('s (stop)\nl (low)\nm (medium)\nh (high)\n')
 sys.stdout.flush()
 
-SLEEP_TIME_MEDIUM_SPEED = 0.0075
+SLEEP_TIME_MEDIUM_SPEED = 0.015
 motorOn = True
 sleepTime = SLEEP_TIME_MEDIUM_SPEED
 receivedNewKey = True
@@ -44,13 +41,13 @@ def keyboardListener():
         motorOn = False
     elif x == 'l':
         print('low')
-        sleepTime = 0.009
+        sleepTime = 0.02
     elif x == 'm':
         print('medium')
         sleepTime = SLEEP_TIME_MEDIUM_SPEED
     elif x == 'h':
         print('high')
-        sleepTime = 0.006
+        sleepTime = 0.01
     else:
         print('unrecognized input')
 
@@ -60,12 +57,9 @@ def keyboardListener():
 
 try:
     while True:
-        print 'motorOn: {}'.format(motorOn)
-        print 'sleepTime: {}'.format(sleepTime)
         sys.stdout.flush()
 
         if not motorOn:
-            GPIO.cleanup()
             break
 
         if receivedNewKey:
@@ -74,11 +68,15 @@ try:
             listener.daemon = True # Forces the thread to be stopped in case the main thread is killed.
             listener.start()
             
-        for halfstep in range(8):
+        for step in range(4):
             for pin in range(4):
-                GPIO.output(controlPins[pin], seq[halfstep][pin])
+                GPIO.output(controlPins[pin], seq[step][pin])
             time.sleep(sleepTime)
-except KeyboardInterrupt:
-    print('CTRL + C pressed, stopping...')
+except Exception:
+    print('An error occurred:')
+    traceback.print_exc()
+    sys.stdout.flush()
+finally:
+    print('clean up') 
     sys.stdout.flush()
     GPIO.cleanup()
