@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.2] - 2021-01-03
+### Added
+- README section now contains instructions on how to start the server on boot.
+
 ## [1.2.1] - 2021-01-03
 ### Fixed
 - Prepared both feeder.py and shooter.py scripts to print the stack trace of exceptions.
@@ -31,7 +35,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Endpoint for stopping the ball feeder motor.
 - Endpoint for changing the speed of the ball feeder motor.
 
-[Unreleased]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.2.1...develop
+[Unreleased]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.2.2...develop
+[1.2.2]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/guilhermeagostinelli/ball-thrower-server/compare/v1.0.0...v1.1.0
